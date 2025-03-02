@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zkCrab</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="start-screen">
+            
+             <!-- Добавьте этот блок для отображения главного изображения -->
+    <div class="main-image-container">
+        <img src="titleImg.png" alt="Game Image">
+    </div>
+            <div class="nickname-container">
+                <input type="text" id="nickname-input" placeholder="Enter your nickname" maxlength="15">
+                <p id="nickname-error" style="display: none;">Please enter a nickname!</p>
+            </div>
+            <button id="play-button">PLAY</button>
+        </div>
+        <div id="right-video-container">
+            <video autoplay loop muted playsinline>
+                <source src="nyan-cat.mp4" type="video/mp4">
+            </video>
+        </div>   
+        <div id="game-over-screen" style="display: none;">
+            <h1>Game Over</h1>
+            <p id="final-score">Score: 0</p>
+            <div id="collected-coins-display" class="coins-grid"></div>
+            <button id="restart-button">RESTART</button>
+        </div>
+        <div id="mission-complete-screen" style="display: none;">
+            <h1>Mission Completed</h1>
+            <p id="mission-final-score">Score: 0</p>
+            <div id="mission-collected-coins-display" class="coins-grid"></div>
+            <button id="mission-restart-button">RESTART</button>
+        </div>
+    </div>
+
+    <!-- Добавляем второе видео для бэкграунда -->
+    <div class="background-title-video" style="display: none;">
+        <video id="background-title" autoplay loop muted playsinline>
+            <source src="title.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

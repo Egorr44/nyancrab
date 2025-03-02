@@ -1,0 +1,318 @@
+@font-face {
+    font-family: 'ByteBounce';
+    src: url('ByteBounce.ttf') format('truetype');
+}
+
+/* Применяем шрифт ко всему документу */
+* {
+    font-family: 'ByteBounce', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('space-background.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    width: 600px;
+    height: 450px; /* Меняем с 600px на 500px */
+    z-index: 2;
+}
+
+/* Убедитесь, что canvas занимает всё пространство контейнера */
+#gameCanvas {
+    display: block;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+#right-gif-container {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 150px;
+    height: 200px;
+    z-index: 1000;
+    pointer-events: none; /* Чтобы GIF не мешала игровому процессу */
+}
+
+#right-video-container {
+    position: fixed;
+    top: 50%;
+   
+    transform: translateY(-50%);
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    height: 270px;
+    z-index: 1000;
+    pointer-events: none; /* Чтобы видео не мешало игровому процессу */
+}
+
+#right-video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+.main-image-container {
+    width: 100%;
+    max-width: 500px;
+    height: 250px; /* Регулируйте высоту по необходимости */
+    margin: 0 auto 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.main-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Сохраняет пропорции изображения */
+    /* Можно использовать cover для заполнения всего контейнера */
+}
+
+/* Стили для контейнера с вводом никнейма */
+.nickname-container {
+    margin-bottom: 1.5rem;
+}
+
+#nickname-input {
+    padding: 0.8rem 1.2rem;
+    font-size: 1.6rem;
+    border: 2px solid #d400ff;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    color: #333;
+}
+
+#nickname-error {
+    color: #ff4444;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Стили для кнопки играть */
+#play-button {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.8rem;
+    margin-top: 1rem;
+    background: #d400ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#play-button:hover {
+    background: #a800cc;
+}
+
+
+#right-gif-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#start-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    color: white;
+}
+
+#game-over-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    color: white;
+}
+#game-over-screen h1 {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+.coins-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 монет в ряд */
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.coins-grid img {
+    width: 40px;
+    height: 40px;
+}
+
+#start-screen h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #d400ff;
+}
+
+button {
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    margin-top: 3rem;
+    background: #d400ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #6a018d;
+}
+
+#final-score {
+    font-size: 3rem;
+    margin: 1rem 0;
+    color: #ffffff;
+}
+
+#mission-complete-screen {
+    position: absolute;
+    top: 50%;
+    font-size: 3rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    color: white;
+}
+
+.nickname-container {
+    margin-bottom: 3rem;
+}
+
+#nickname-input {
+    padding: 0.8rem 1.2rem;
+    font-size: 2rem;
+    border: 2px solid #d400ff;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    color: #333;
+}
+
+#nickname-input:focus {
+    outline: none;
+    border-color: #d400ff;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+#nickname-error {
+    color: #ff4444;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 2rem auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#title-video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Обновляем стили для start-screen */
+#start-screen {
+    width: 80%;
+    max-width: 600px;
+}
+#title-video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.background-title-video {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25%; /* уменьшаем до 25% от исходного размера */
+    height: 100px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+#background-title {
+    width: 100%;
+    height: 100%;
+    object-fit: none;
+}
+
+#game-container {
+    position: relative;
+    width: 600px;
+    height: 450px;
+    z-index: 2;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 2rem auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Добавленные стили для фонового видео игры */
+#game-background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
