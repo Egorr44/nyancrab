@@ -450,7 +450,7 @@ function spawnAsteroid() {
 
 // Спавн монет
 function spawnNextCoin(currentTime) {
-    if (coins.length === 0 && currentTime - lastCoinSpawnTime > 8000) {
+    if (coins.length === 0 && currentTime - lastCoinSpawnTime > 6500) {
         if (availableCoins.length > 0) {
             // Вычисляем пропущенные монеты (те, которые не собраны)
             const missedCoins = availableCoins.filter(coinType => !collectedCoins.includes(coinType));
