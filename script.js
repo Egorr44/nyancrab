@@ -724,7 +724,7 @@ function gameLoop(currentTime) {
     updateExplosions(currentTime);
     spawnNextCoin(currentTime);
 
-    if (Math.random() < 0.03 && !collisionPoint) spawnAsteroid();
+    if (Math.random() < 0.02 && !collisionPoint) spawnAsteroid();
 
     // Проверка завершения миссии
     if (checkMissionComplete()) {
