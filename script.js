@@ -418,9 +418,9 @@ function showMissionComplete() {
     }
 }
 
-// Управление игроком
+/// Управление игроком
 window.addEventListener('keydown', (e) => {
-    if (e.code === 'ArrowUp' && !collisionPoint) player.speedY += player.lift;
+    if (e.code === 'Enter' && !collisionPoint) player.speedY += player.lift;
     if (e.code === 'Space' && !collisionPoint) {
         bullets.push({ x: player.x + player.width, y: player.y + player.height / 2, width: 10, height: 5, speed: 9 });
         laserSound.currentTime = 0;
