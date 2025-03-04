@@ -52,6 +52,7 @@ const gameOverScreen = document.getElementById('game-over-screen');
 const playButton = document.getElementById('play-button');
 const restartButton = document.getElementById('restart-button');
 const finalScoreElement = document.getElementById('final-score');
+const nicknameInput = document.getElementById('nickname-input');
 const nicknameError = document.getElementById('nickname-error');
 let playerNickname = '';
 
