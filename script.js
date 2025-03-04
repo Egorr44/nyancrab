@@ -52,7 +52,6 @@ const gameOverScreen = document.getElementById('game-over-screen');
 const playButton = document.getElementById('play-button');
 const restartButton = document.getElementById('restart-button');
 const finalScoreElement = document.getElementById('final-score');
-const nicknameInput = document.getElementById('nickname-input');
 const nicknameError = document.getElementById('nickname-error');
 let playerNickname = '';
 
@@ -747,3 +746,28 @@ missionRestartButton.addEventListener('click', startGame);
 // Инициализация игры
 startScreen.style.display = 'block';
 gameOverScreen.style.display = 'none';
+
+// Активация кнопки PLAY по нажатию Enter в поле ввода никнейма
+
+nicknameInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Предотвращаем стандартное поведение Enter (отправку формы)
+        document.getElementById('play-button').click(); // Имитируем клик по кнопке PLAY
+    }
+});
+
+// Активация кнопки RESTART по нажатию Enter на экране Game Over
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' && gameOverScreen.style.display !== 'none') {
+        event.preventDefault();
+        document.getElementById('restart-button').click(); // Имитируем клик по кнопке RESTART
+    }
+});
+
+// Активация кнопки RESTART по нажатию Enter на экране завершения миссии
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' && missionCompleteScreen.style.display !== 'none') {
+        event.preventDefault();
+        document.getElementById('mission-restart-button').click(); // Имитируем клик по кнопке RESTART на экране миссии
+    }
+});
